@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>İklim Değişikliği Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>İklim Değişikliği Quiz 🌍</h1>
+  <div id="soru"></div>
+  <div id="siklar"></div> <!-- Şıklar buraya gelecek -->
+  <p id="sonuc"></p>
+  <p id="skor">Puan: 0</p>
+
+  <script>
+    const quiz = [
+      {
+        soru: "Dünyayı en çok ısıtan gaz hangisidir?", 
+        siklar: ["a) Oksijen", "b) Karbon Dioksit", "c) Azot"],
+        cevap: "b"
+      },
+      {
+        soru: "Karbon ayak izi nedir?", 
+        siklar: ["a) Ayda yürüyen mesafe", "b) Bir kişinin doğaya bıraktığı CO2 miktarı", "c) Yıldızların sayısı"],
+        cevap: "b"
+      },
+      {
+        soru: "Geri dönüşüm hangi malzemeler için yapılır?", 
+        siklar: ["a) Plastik, cam, kağıt", "b) Su ve hava", "c) Toprak"],
+        cevap: "a"
+      },
+      {
+        soru: "Fosil yakıtlar hangi enerjiyi sağlar?", 
+        siklar: ["a) Yenilenebilir enerji", "b) Fosil enerji", "c) Güneş enerjisi"],
+        cevap: "b"
+      },
+      {
+        soru: "Ağaç dikmek neden önemlidir?", 
+        siklar: ["a) Doğayı kirletmek için", "b) Karbondioksiti azaltmak için", "c) Hava kirliliğini artırmak için"],
+        cevap: "b"
+      }
+    ];
+
+    let index = 0;
+    let puan = 0;
+    const soruDiv = document.getElementById("soru");
+    const siklarDiv = document.getElementById("siklar");
+    const sonucDiv = document.getElementById("sonuc");
+    const skorDiv = document.getElementById("skor");
+
+    function gosterSoru() {
+      if(index < quiz.length){
+        soruDiv.innerText = quiz[index].soru;
+        sonucDiv.innerText = "";
+        siklarDiv.innerHTML = ""; // önceki şıkları temizle
+
+        quiz[index].siklar.forEach(sik => {
+          const btn = document.createElement("button");
+          btn.innerText = sik;
+          btn.onclick = () => kontrolEt(sik[0].toLowerCase()); // a, b, c
+          siklarDiv.appendChild(btn);
+        });
+
+      } else {
+        soruDiv.innerText = "Quiz tamamlandı!";
+        siklarDiv.innerHTML = "";
+        sonucDiv.innerText = `Toplam puanınız: ${puan} / ${quiz.length}`;
+      }
+      skorDiv.innerText = `Puan: ${puan}`;
+    }
+
+    function kontrolEt(secim){
+      if(secim === quiz[index].cevap){
+        sonucDiv.innerText = "Doğru! ✅";
+        puan++;
+      } else {
+        sonucDiv.innerText = `Yanlış 😢 Doğru cevap: ${quiz[index].cevap}`;
+      }
+      index++;
+      setTimeout(gosterSoru, 1000);
+    }
+
+    gosterSoru();
+  </script>
+</body>
+</html>

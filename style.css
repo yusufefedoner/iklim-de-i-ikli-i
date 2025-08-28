@@ -1,0 +1,85 @@
+/* Sayfa ve arka plan */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  background-image: url('dogaresm.webp');
+  background-size: cover;           /* Ekranı tamamen kaplar */
+  background-repeat: no-repeat;  
+  color: #ffffff;                   /* Yazılar arka planda okunaklı */
+  
+}
+
+/* Yarı saydam overlay ile okunabilirlik artır */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* %40 opak siyah */
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1; /* Yazılar overlay’in üstünde */
+}
+
+/* Başlık */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+/* Soru ve sonuç alanları */
+#soru, #sonuc, #skor {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* Input ve buton stili */
+input[type="text"], button {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  color: #000000;
+}
+
+/* Buton hover efekti */
+button:hover {
+  cursor: pointer;
+  background-color: #321c1c;
+  color: rgb(169, 20, 20);
+}
+
+
+#siklar button {
+  display: block;
+  width: 50%;
+  margin: 5px auto;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #ffffffaa;
+}
+
+#siklar button:hover {
+  background-color: #238a4b;
+  color: #fff;
+}
